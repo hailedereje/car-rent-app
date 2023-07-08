@@ -1,9 +1,10 @@
 "use client"
 import { CarCardProps, CarProps } from "@/types"
-import { calculateCarRent } from "@/utils"
+import { calculateCarRent, generateCarImage } from "@/utils"
 import Image from 'next/image'
 import CustomBtn from "./CustomBtn"
 import { useState } from "react"
+import CarDetails from "./CarDetails"
 
 const CarCard = ({car}:CarCardProps) => {
 
@@ -26,7 +27,7 @@ const CarCard = ({car}:CarCardProps) => {
             <span className="self-end text-[14px] font-medium">/day</span>
         </p>
         <div className="relative w-full h-40 object-contain">
-          <Image src={'/hero.png'} alt="car" fill priority className="object-contain"/>
+          <Image src={generateCarImage(car)} alt="car" fill priority className="object-contain"/>
         </div>
         <div className="relative flex w-full mt-2">
           <div className="flex group-hover:invisible w-full justify-between text-gray-500">
@@ -54,9 +55,10 @@ const CarCard = ({car}:CarCardProps) => {
               textStyle='text-white text-[14px] leading-[17px] font-bold'
               rightIcon="/right-arrow.svg"
               handleClick={() => setIsOpen(true)}
-              />
+            />
           </div>
         </div>
+        <CarDetails isOpen={isOpen} closeModal={()=>setIsOpen(false)} car={car}/>
     </div>
   )
 }

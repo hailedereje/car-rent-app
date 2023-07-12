@@ -1,5 +1,6 @@
 import { Footer, Navbar } from '@/components'
 import './globals.css'
+import SignUp from '@/components/SignUp'
 
 export const metadata = {
   title: 'Car Hub',
@@ -17,6 +18,7 @@ export default function RootLayout({
         <Navbar/> 
         {children}
         <Footer/>
+        {/* <SignUp/> */}
       </body>
     </html>
   )
